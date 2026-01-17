@@ -1,0 +1,357 @@
+/* Batch Results Display Styles */
+.batch-results-display {
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Batch Header */
+.batch-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  animation: bounce 0.5s ease;
+}
+
+.batch-emoji {
+  font-size: 2.5rem;
+}
+
+.batch-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.batch-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--lego-purple);
+  text-shadow: 2px 2px 0 var(--lego-yellow);
+  margin: 0;
+}
+
+.batch-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.batch-subtitle strong {
+  color: var(--lego-blue);
+}
+
+/* Category Summary */
+.category-summary {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 8px 30px var(--shadow-color);
+  border-left: 6px solid var(--lego-blue);
+}
+
+.summary-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--lego-blue);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.category-pill {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 20px;
+  background: #f0f0f0;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+}
+
+.category-pill:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.category-pill.active {
+  background: var(--lego-yellow);
+  border-color: var(--lego-orange);
+  color: var(--text-primary);
+}
+
+/* Interesting Finds */
+.interesting-finds {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-left: 6px solid var(--lego-orange);
+}
+
+.finds-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--lego-orange);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.finds-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.find-item {
+  padding: var(--spacing-sm) 0;
+  padding-left: var(--spacing-md);
+  position: relative;
+  font-size: 1.05rem;
+}
+
+.find-item::before {
+  content: '🌟';
+  position: absolute;
+  left: 0;
+  font-size: 0.9rem;
+}
+
+/* Brick Grid */
+.brick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Batch Brick Card */
+.batch-brick-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 4px 15px var(--shadow-color);
+  border-left: 4px solid var(--lego-red);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.batch-brick-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.batch-brick-card.expanded {
+  border-left-width: 6px;
+  border-left-color: var(--lego-green);
+}
+
+.batch-brick-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.mini-confidence {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.batch-brick-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--lego-blue);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Quick Info Tags */
+.batch-brick-quick-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.quick-tag {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.quick-tag.dimensions {
+  background: var(--lego-yellow);
+  color: var(--text-primary);
+}
+
+.quick-tag.color {
+  background: #E3F2FD;
+  color: var(--lego-blue);
+}
+
+.quick-tag.count {
+  background: var(--lego-green);
+  color: white;
+}
+
+/* Expanded Details */
+.batch-brick-details {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 2px dashed #e0e0e0;
+  animation: fadeIn 0.3s ease;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.detail-row .detail-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.detail-row .detail-value {
+  font-weight: 700;
+}
+
+.detail-row .part-num {
+  font-family: monospace;
+  background: var(--lego-yellow);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.batch-brick-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: var(--spacing-sm) 0;
+  line-height: 1.4;
+}
+
+.find-sets-button {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, var(--lego-blue) 0%, #0077E6 100%);
+  color: white;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  transition: all 0.2s ease;
+}
+
+.find-sets-button:hover {
+  background: linear-gradient(135deg, #0066CC 0%, var(--lego-blue) 100%);
+  transform: scale(1.02);
+}
+
+/* Batch Suggestions */
+.batch-suggestions {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 8px 30px var(--shadow-color);
+  border-left: 6px solid var(--lego-green);
+}
+
+.batch-suggestions .suggestions-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--lego-green);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.batch-suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.batch-suggestion-item {
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: transform 0.2s ease;
+}
+
+.batch-suggestion-item:hover {
+  transform: scale(1.05);
+}
+
+/* Batch Message */
+.batch-message {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+  border-radius: var(--radius-lg);
+  animation: fadeIn 0.5s ease;
+}
+
+.batch-message p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--lego-purple);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .batch-title {
+    font-size: 1.6rem;
+  }
+
+  .batch-emoji {
+    font-size: 2rem;
+  }
+
+  .brick-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .batch-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .batch-emoji {
+    display: none;
+  }
+
+  .category-pills {
+    justify-content: center;
+  }
+}

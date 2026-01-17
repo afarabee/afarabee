@@ -58,8 +58,9 @@ app.post('/api/identify', upload.single('image'), async (req, res) => {
       }
     }
 
-    console.log('🔍 Identifying LEGO brick...');
-    const identification = await identifyBrick(imageData, mediaType);
+    const batchMode = req.body.batchMode === true;
+    console.log(`🔍 Identifying LEGO brick${batchMode ? 's (BATCH MODE)' : ''}...`);
+    const identification = await identifyBrick(imageData, mediaType, batchMode);
 
     console.log('✅ Brick identified:', identification);
     res.json(identification);

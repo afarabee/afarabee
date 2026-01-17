@@ -3,6 +3,7 @@ import Header from './components/Header';
 import ImageUploader from './components/ImageUploader';
 import CameraCapture from './components/CameraCapture';
 import ResultsDisplay from './components/ResultsDisplay';
+import BatchResultsDisplay from './components/BatchResultsDisplay';
 import SetsList from './components/SetsList';
 import LoadingSpinner from './components/LoadingSpinner';
 import './styles/App.css';
@@ -14,6 +15,7 @@ function App() {
   const [showCamera, setShowCamera] = useState(false);
   const [selectedPart, setSelectedPart] = useState(null);
   const [sets, setSets] = useState(null);
+  const [batchMode, setBatchMode] = useState(false);
 
   const handleImageSubmit = async (imageData) => {
     setIsLoading(true);
@@ -28,7 +30,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ imageBase64: imageData }),
+        body: JSON.stringify({ imageBase64: imageData, batchMode }),
       });
 
       if (!response.ok) {
@@ -38,8 +40,8 @@ function App() {
       const data = await response.json();
       setResults(data);
 
-      // If we identified a brick with a part number, fetch sets
-      if (data.identified && data.bricks?.[0]?.partNumber) {
+      // If we identified a brick with a part number (single mode), fetch sets
+      if (!batchMode && data.identified && data.bricks?.[0]?.partNumber) {
         fetchSets(data.bricks[0].partNumber);
       }
     } catch (err) {
@@ -59,6 +61,12 @@ function App() {
       }
     } catch (err) {
       console.error('Failed to fetch sets:', err);
+    }
+  };
+
+  const handleSelectBrick = (brick) => {
+    if (brick.partNumber) {
+      fetchSets(brick.partNumber);
     }
   };
 
@@ -83,23 +91,59 @@ function App() {
 
       <main className="main-content">
         {isLoading ? (
-          <LoadingSpinner />
+          <LoadingSpinner batchMode={batchMode} />
         ) : results ? (
           <div className="results-container">
-            <ResultsDisplay results={results} />
+            {results.batchMode || batchMode ? (
+              <BatchResultsDisplay results={results} onSelectBrick={handleSelectBrick} />
+            ) : (
+              <ResultsDisplay results={results} />
+            )}
             {sets && sets.sets?.length > 0 && (
               <SetsList sets={sets} partNumber={selectedPart} />
             )}
             <button className="big-button reset-button" onClick={handleReset}>
               <span className="button-icon">🔄</span>
-              Try Another Brick!
+              Try Another {batchMode ? 'Collection' : 'Brick'}!
             </button>
           </div>
         ) : (
           <div className="upload-section">
             <h2 className="section-title">
-              Take a photo or upload a picture of your LEGO brick!
+              {batchMode
+                ? 'Take a photo of your LEGO collection!'
+                : 'Take a photo or upload a picture of your LEGO brick!'}
             </h2>
+
+            {/* Mode Toggle */}
+            <div className="mode-toggle">
+              <button
+                className={`mode-button ${!batchMode ? 'active' : ''}`}
+                onClick={() => setBatchMode(false)}
+              >
+                <span className="mode-icon">🧱</span>
+                <span className="mode-label">Single Brick</span>
+                <span className="mode-desc">Identify one brick</span>
+              </button>
+              <button
+                className={`mode-button ${batchMode ? 'active' : ''}`}
+                onClick={() => setBatchMode(true)}
+              >
+                <span className="mode-icon">📦</span>
+                <span className="mode-label">Batch Mode</span>
+                <span className="mode-desc">Scan a pile</span>
+              </button>
+            </div>
+
+            {batchMode && (
+              <div className="batch-mode-tip">
+                <span className="tip-icon">💡</span>
+                <p>
+                  <strong>Tip:</strong> Spread your bricks out on a flat surface for best results.
+                  The AI will try to identify as many different types as it can see!
+                </p>
+              </div>
+            )}
 
             <div className="upload-options">
               {showCamera ? (

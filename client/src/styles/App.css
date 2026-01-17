@@ -113,6 +113,81 @@
   gap: var(--spacing-md);
 }
 
+/* Mode Toggle */
+.mode-toggle {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mode-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: white;
+  border: 3px solid #e0e0e0;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.mode-button:hover {
+  border-color: var(--lego-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.mode-button.active {
+  border-color: var(--lego-green);
+  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.mode-icon {
+  font-size: 2rem;
+}
+
+.mode-label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.mode-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Batch Mode Tip */
+.batch-mode-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: left;
+  animation: fadeIn 0.3s ease;
+}
+
+.batch-mode-tip .tip-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.batch-mode-tip p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
 /* Big Buttons - Kid & Senior Friendly */
 .big-button {
   display: flex;
