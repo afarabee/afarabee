@@ -1,67 +1,146 @@
-## Hi there, I’m Aimee 👋
+# Papa's Brick Builder
 
-Director-level Product & AI Enablement leader who turns ambiguous AI chaos into systems that actually work.  
-I build human-centered AI products in complex, regulated environments and I sleep just fine knowing they hold up in the real world.
+A colorful, kid-friendly web app that identifies LEGO bricks from photos using AI vision technology!
 
-I like my AI useful, my roadmaps grounded in reality, and my products shipped, adopted, and defensible.
-
----
-
-## 🧠 What I Do
-
-- Lead AI product strategy, enablement, and governance at scale 
-- Build and launch generative AI products in life sciences, healthcare, and for personal use  
-- Design AI intake, prioritization, and risk management frameworks that people actually follow  
-- Translate executive ambition into shipped, adopted, measurable outcomes
-- Personally design, build, and test AI workflows, prompts, and evaluation frameworks beyond my day job  
-- Continuously upskill through hands-on experimentation with new models, tools, and AI patterns
+Built with love for Papa and all LEGO enthusiasts who want to discover what bricks they have and what they can build with them.
 
 ---
 
-## 🧩 Areas I Obsess Over
+## Features
 
-- Building products and platforms that drive tangible enterprise transformation and business results
-- AI governance, risk, and controls that do not kill innovation  
-- Rapid prototyping, structured learning cycles, and incremental releases that prioritize value 
-- Adoption, behavior change, and real productivity gains  
-- Turning “we should use AI” into "why did we take so long to start using AI?"
-
----
-
-## 🛠️ Tools & Tech I Work With
-
-- Generative AI platforms and LLMs  
-- Azure, GitHub, DevOps tooling
-- Any low/no-code tool I can get my hands on
-- AI Risk frameworks
-- Enough spreadsheets to frighten lesser mortals  
+- **AI-Powered Brick Recognition** - Uses Anthropic's Claude Vision API to identify LEGO bricks from photos
+- **Camera Capture** - Take photos directly from your device's camera
+- **Image Upload** - Drag and drop or select images from your device
+- **LEGO Set Discovery** - Find official LEGO sets that contain your identified bricks via Rebrickable
+- **Building Instructions** - Links to building instructions for discovered sets
+- **Kid-Friendly UI** - Big, colorful buttons perfect for all ages
+- **Fun Facts** - Learn interesting facts about each brick type
 
 ---
 
-## 🧠 Philosophy
+## Tech Stack
 
-- AI should earn trust, not demand it  
-- Small wins compound faster than moonshots  
-- Governance is a product, not a policy  
-- If no one adopts it, it does not matter how clever it is  
+**Frontend:**
+- React 18 with Vite
+- Custom CSS with LEGO-themed design
+- Responsive, mobile-first layout
 
-Also, if your AI strategy requires vibes and hope, we need to talk.
-
----
-
-## 🐾 Outside of Work
-
-Dog mom. Married. Mini-farm in Middle Tennessee.  
-Enjoys being out on the lake, throwing the ball with my dogs, and picking heavy stuff up and putting it back down.  
-Owns more notebooks than is strictly necessary.
+**Backend:**
+- Node.js with Express
+- Anthropic Claude Vision API for image recognition
+- Rebrickable API for LEGO database and instructions
 
 ---
 
-## 📬 Find Me
+## Getting Started
 
-- Personal brand and portfolio: **AI with Aimee**  
-- GitHub is where the thinking turns into artifacts  
-- Open to conversations about AI leadership, governance, and products that deliver exceptional experiences in the real world  
+### Prerequisites
 
-If you are building AI responsibly, I’m probably rooting for you.  
-If you are winging it, I’m definitely watching.
+- Node.js 18+ installed
+- Anthropic API key ([Get one here](https://console.anthropic.com/))
+- Rebrickable API key ([Get one here](https://rebrickable.com/api/))
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/afarabee/afarabee.git
+   cd afarabee
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm run install:all
+   ```
+
+3. Set up environment variables:
+   ```bash
+   cp server/.env.example server/.env
+   ```
+
+   Edit `server/.env` and add your API keys:
+   ```
+   ANTHROPIC_API_KEY=your_anthropic_api_key_here
+   REBRICKABLE_API_KEY=your_rebrickable_api_key_here
+   ```
+
+4. Start the development servers:
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser to `http://localhost:5173`
+
+---
+
+## Project Structure
+
+```
+papas-brick-builder/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   ├── styles/         # CSS stylesheets
+│   │   └── App.jsx         # Main app component
+│   └── package.json
+├── server/                 # Express backend
+│   ├── services/
+│   │   ├── visionService.js      # Anthropic Vision API
+│   │   └── rebrickableService.js # Rebrickable API
+│   ├── index.js            # Server entry point
+│   └── package.json
+└── package.json            # Root package.json
+```
+
+---
+
+## API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/health` | GET | Health check |
+| `/api/identify` | POST | Identify LEGO bricks from an image |
+| `/api/parts/search` | GET | Search for LEGO parts by name |
+| `/api/parts/:partNum` | GET | Get details for a specific part |
+| `/api/parts/:partNum/sets` | GET | Get sets containing a specific part |
+
+---
+
+## Usage
+
+1. **Take a Photo** - Click the camera button to capture a photo of your LEGO brick
+2. **Or Upload** - Drag and drop an image or click to select from your files
+3. **Get Results** - The AI will identify your brick and show:
+   - Brick name and part number
+   - Category and dimensions
+   - Color information
+   - Fun facts about the brick
+4. **Discover Sets** - See which official LEGO sets use this brick
+5. **View Instructions** - Click through to Rebrickable for building instructions
+
+---
+
+## Tips for Best Results
+
+- Use good lighting when photographing bricks
+- Place the brick on a contrasting background
+- Try to capture the brick from an angle that shows its distinctive features
+- Single bricks work best for identification
+
+---
+
+## License
+
+MIT
+
+---
+
+## Acknowledgments
+
+- [Anthropic](https://www.anthropic.com/) for the Claude Vision API
+- [Rebrickable](https://rebrickable.com/) for the comprehensive LEGO database
+- All the LEGO fans who inspire creativity!
+
+---
+
+Made with love for Papa and LEGO builders everywhere!

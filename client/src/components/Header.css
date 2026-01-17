@@ -1,0 +1,184 @@
+/* Header Styles */
+.header {
+  background: linear-gradient(135deg, var(--lego-red) 0%, #C41430 100%);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* LEGO Brick Logo Element */
+.logo-brick {
+  width: 50px;
+  height: 35px;
+  background: var(--lego-yellow);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: 0 4px 0 #CCA300;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.logo-brick:last-child {
+  animation-delay: 0.5s;
+}
+
+.stud {
+  width: 14px;
+  height: 14px;
+  background: var(--lego-yellow);
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15), 0 2px 0 #CCA300;
+}
+
+.stud:first-child {
+  left: 8px;
+}
+
+.stud:last-child {
+  right: 8px;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+  line-height: 1.1;
+}
+
+.logo-highlight {
+  color: var(--lego-yellow);
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  margin-top: var(--spacing-xs);
+}
+
+/* Decorative Bricks */
+.header-decoration {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: var(--spacing-md);
+}
+
+.deco-brick {
+  width: 40px;
+  height: 25px;
+  border-radius: 4px;
+  position: relative;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+.deco-brick::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-radius: 50%;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.deco-brick.red {
+  background: #FF6B6B;
+  animation-delay: 0s;
+}
+
+.deco-brick.yellow {
+  background: var(--lego-yellow);
+  animation-delay: 0.1s;
+}
+
+.deco-brick.blue {
+  background: #4A90D9;
+  animation-delay: 0.2s;
+}
+
+.deco-brick.green {
+  background: #50C878;
+  animation-delay: 0.3s;
+}
+
+.deco-brick.orange {
+  background: var(--lego-orange);
+  animation-delay: 0.4s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 2rem;
+  }
+
+  .logo-brick {
+    width: 40px;
+    height: 28px;
+  }
+
+  .stud {
+    width: 12px;
+    height: 12px;
+    top: -7px;
+  }
+
+  .stud:first-child {
+    left: 6px;
+  }
+
+  .stud:last-child {
+    right: 6px;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .logo-brick {
+    display: none;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+
+  .deco-brick {
+    width: 30px;
+    height: 20px;
+  }
+
+  .deco-brick::before {
+    width: 8px;
+    height: 8px;
+    top: -5px;
+  }
+}

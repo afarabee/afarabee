@@ -1,0 +1,16 @@
+{
+  "name": "papas-brick-builder",
+  "version": "1.0.0",
+  "description": "Papa's Brick Builder - Identify LEGO bricks from photos!",
+  "scripts": {
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "dev": "npm run dev:server & npm run dev:client",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "keywords": ["lego", "brick", "identifier", "vision", "ai"],
+  "author": "Papa's Brick Builder Team",
+  "license": "MIT"
+}
